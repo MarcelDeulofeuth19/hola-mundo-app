@@ -85,6 +85,16 @@ Este repositorio acompana el informe de entrega con:
 - Evidencias de configuracion con Git/GitHub.
 - Documento final en Word/PDF.
 
+## Contribucion
+
+Si deseas proponer mejoras:
+
+1. Crea una rama nueva desde `main`.
+2. Realiza cambios pequenos y descriptivos.
+3. Ejecuta `git add .` y `git commit -m \"mensaje\"`.
+4. Sube la rama con `git push origin nombre-rama`.
+5. Abre un Pull Request hacia `main`.
+
 ## Autor
 
 - mdeulofeuth@alocredit.co
