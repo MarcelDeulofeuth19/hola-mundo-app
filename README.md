@@ -1,45 +1,66 @@
 ﻿# HolaMundoApp
 
-Aplicacion Android basica desarrollada como evidencia de la actividad 2.2 (Programacion Movil).  
-El proyecto implementa una pantalla inicial con el mensaje **"Hola Mundo"**, construida con **Kotlin** y **XML** en **Android Studio**.
+[![Android](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white)](https://developer.android.com/)
+[![Kotlin](https://img.shields.io/badge/Language-Kotlin-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/Build-Gradle-02303A?logo=gradle&logoColor=white)](https://gradle.org/)
+[![License](https://img.shields.io/badge/License-Academico-blue)](#licencia)
 
-## Repositorio oficial
+Aplicacion Android base para la actividad 2.2 del curso de Programacion Movil. El proyecto implementa una pantalla inicial con el mensaje **Hola Mundo**, y deja una estructura limpia para evolucionar a versiones mas completas.
 
-GitHub: [https://github.com/MarcelDeulofeuth19/hola-mundo-app](https://github.com/MarcelDeulofeuth19/hola-mundo-app)
+Repositorio: **https://github.com/MarcelDeulofeuth19/hola-mundo-app**
 
-## Objetivo del proyecto
+## Tabla de contenido
 
-- Configurar un entorno de desarrollo Android.
-- Crear una primera app funcional tipo Hola Mundo.
-- Integrar control de versiones con Git y GitHub.
-- Documentar estructura, archivos clave y flujo de trabajo.
+- [Resumen ejecutivo](#resumen-ejecutivo)
+- [Capturas](#capturas)
+- [Arquitectura y stack](#arquitectura-y-stack)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Requisitos](#requisitos)
+- [Quick start](#quick-start)
+- [Flujo de trabajo con Git y PR](#flujo-de-trabajo-con-git-y-pr)
+- [Comandos utiles](#comandos-utiles)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Autor](#autor)
+- [Licencia](#licencia)
 
-## Tecnologias usadas
+## Resumen ejecutivo
 
-- Android Studio
-- Kotlin
-- Android SDK (compileSdk 34)
-- Gradle Kotlin DSL
-- Git + GitHub
+Este repositorio demuestra tres competencias clave:
 
-## Requisitos
+1. **Configuracion de entorno Android** con Android Studio + SDK.
+2. **Construccion de una app funcional minima** usando Kotlin y XML.
+3. **Versionamiento colaborativo** con Git y flujo de Pull Request en GitHub.
 
-- Android Studio instalado (version reciente recomendada)
-- JDK 17
-- SDK de Android configurado
-- Emulador Android o dispositivo fisico con depuracion USB
+## Capturas
 
-## Como ejecutar la app
+### Vista de la APP
 
-1. Clona el repositorio:
+![Vista APP](docs/images/preview_app.png)
 
-```bash
-git clone https://github.com/MarcelDeulofeuth19/hola-mundo-app.git
+### Estructura de carpetas
+
+![Estructura Proyecto](docs/images/estructura_proyecto.png)
+
+## Arquitectura y stack
+
+### Stack tecnico
+
+- **IDE:** Android Studio
+- **Lenguaje:** Kotlin
+- **UI:** XML (ConstraintLayout + TextView)
+- **Build system:** Gradle Kotlin DSL
+- **Control de versiones:** Git + GitHub
+- **SDK:** `compileSdk 34`, `targetSdk 34`, `minSdk 24`
+
+### Flujo de inicializacion
+
+```mermaid
+flowchart LR
+    A[MainActivity.onCreate] --> B[setContentView activity_main.xml]
+    B --> C[TextView tvHolaMundo]
+    C --> D[Render en pantalla]
 ```
-
-2. Abre la carpeta `HolaMundoApp` en Android Studio.
-3. Espera la sincronizacion de Gradle.
-4. Ejecuta la app con `Run` sobre un emulador o celular.
 
 ## Estructura del proyecto
 
@@ -47,6 +68,7 @@ git clone https://github.com/MarcelDeulofeuth19/hola-mundo-app.git
 HolaMundoApp/
 |-- app/
 |   |-- build.gradle.kts
+|   |-- proguard-rules.pro
 |   `-- src/main/
 |       |-- AndroidManifest.xml
 |       |-- java/com/example/holamundo/MainActivity.kt
@@ -55,39 +77,114 @@ HolaMundoApp/
 |           `-- values/strings.xml
 |-- build.gradle.kts
 |-- gradle.properties
-`-- settings.gradle.kts
+|-- settings.gradle.kts
+`-- README.md
 ```
 
-## Archivos clave
+### Archivos principales
 
-- `MainActivity.kt`: actividad principal donde se inicializa la interfaz con `setContentView`.
-- `activity_main.xml`: layout principal con `TextView` centrado.
-- `strings.xml`: recursos de texto (`app_name` y `hola_mundo`).
-- `AndroidManifest.xml`: declaracion de la actividad principal y configuracion general de la app.
+| Archivo | Responsabilidad |
+|---|---|
+| `MainActivity.kt` | Punto de entrada de UI. Ejecuta `setContentView` en `onCreate`. |
+| `activity_main.xml` | Define layout principal y `TextView` centrado. |
+| `strings.xml` | Centraliza textos de interfaz. |
+| `AndroidManifest.xml` | Declara actividad launcher y configuracion global de app. |
+| `app/build.gradle.kts` | Dependencias AndroidX, compilacion y parametros de build. |
 
-## Flujo Git usado en esta actividad
+## Requisitos
+
+- Android Studio estable (recomendado: version reciente)
+- JDK 17
+- Android SDK instalado
+- Emulador Android o dispositivo fisico con USB debugging
+- Git instalado
+
+## Quick start
+
+### 1) Clonar
 
 ```bash
-git init
-git add .
-git commit -m "Proyecto base Hola Mundo"
-git branch -M main
-git remote add origin https://github.com/MarcelDeulofeuth19/hola-mundo-app.git
-git push -u origin main
+git clone https://github.com/MarcelDeulofeuth19/hola-mundo-app.git
+cd hola-mundo-app
 ```
 
-## Evidencia academica
+### 2) Abrir en Android Studio
 
-Este repositorio acompana el informe de entrega con:
+- `File > Open` y seleccionar la carpeta del proyecto.
+- Esperar sincronizacion de Gradle.
 
-- Evidencias del codigo fuente.
-- Evidencias de estructura del proyecto.
-- Evidencias de configuracion con Git/GitHub.
-- Documento final en Word/PDF.
+### 3) Ejecutar
+
+- Seleccionar emulador/dispositivo.
+- Presionar `Run`.
+
+## Flujo de trabajo con Git y PR
+
+### Ramas
+
+- `main`: rama estable.
+- `feature/*` o `chore/*`: cambios de desarrollo.
+
+### Flujo recomendado
+
+```bash
+git checkout -b feature/nombre-cambio
+# editar archivos
+git add .
+git commit -m "feat: descripcion breve del cambio"
+git push -u origin feature/nombre-cambio
+```
+
+Crear Pull Request en GitHub hacia `main` con:
+
+- **Titulo claro** (que problema resuelve)
+- **Descripcion tecnica** (que cambia y por que)
+- **Checklist** de pruebas ejecutadas
+
+## Comandos utiles
+
+```bash
+# estado del repositorio
+git status -sb
+
+# historial compacto
+git log --oneline --graph --decorate -10
+
+# traer cambios remotos
+git fetch --all --prune
+
+# cambiar remoto
+git remote -v
+```
+
+## Troubleshooting
+
+### Error de Gradle sync
+
+- Verificar internet y repositorios (`google`, `mavenCentral`).
+- Confirmar versiones compatibles de plugin Android/Kotlin.
+
+### Emulador no inicia
+
+- Habilitar virtualizacion en BIOS.
+- Revisar Device Manager y recrear AVD.
+
+### Error de permisos GitHub
+
+- Validar URL del remoto.
+- Verificar autenticacion de Git (token/credenciales).
+
+## Roadmap
+
+- [ ] Migrar a arquitectura en capas (UI / domain / data)
+- [ ] Agregar pruebas unitarias de primer nivel
+- [ ] Configurar pipeline CI (build y lint)
+- [ ] Incorporar navegacion entre pantallas
 
 ## Autor
 
-- mdeulofeuth@alocredit.co
+- **Marcel Deulofeuth**
+- **Correo:** mdeulofeuth@alocredit.co
 
 ## Licencia
 
