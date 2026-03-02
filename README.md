@@ -34,9 +34,7 @@ Este repositorio demuestra tres competencias clave:
 
 ## Capturas
 
-### Vista de la APP
 
-![Vista APP](docs/images/preview_app.png)
 
 ### Estructura de carpetas
 
